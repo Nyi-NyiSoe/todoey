@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:todoey/widgets/tasks_list.dart';
 import 'add_task_screen.dart';
+import 'package:todoey/models/task.dart';
+import 'package:provider/provider.dart';
+import 'package:todoey/models/task_data.dart';
 class TasksScreen extends StatelessWidget {
-  const TasksScreen({super.key});
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +26,10 @@ class TasksScreen extends StatelessWidget {
         children: [
           Container(
             padding: const EdgeInsets.only(top: 60.0, left: 30.0, right: 30.0),
-            child: const Column(
+            child:  Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CircleAvatar(
+                  const CircleAvatar(
                     backgroundColor: Colors.white,
                     radius: 30.0,
                     child: Icon(
@@ -38,17 +38,17 @@ class TasksScreen extends StatelessWidget {
                       color: Colors.lightBlueAccent,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10.0,
                   ),
-                  Text('Todoey',
+                  const Text('Todoey',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 50.0,
                           fontWeight: FontWeight.w700)),
                   Text(
-                    '12 Tasks',
-                    style: TextStyle(color: Colors.white, fontSize: 18.0),
+                    '${Provider.of<TaskData>(context).taskCount} Tasks',
+                    style: const TextStyle(color: Colors.white, fontSize: 18.0),
                   ),
                 ]),
           ),
@@ -58,7 +58,7 @@ class TasksScreen extends StatelessWidget {
           Expanded(
             
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
               decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(20.0),
